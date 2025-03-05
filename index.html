@@ -20,31 +20,20 @@
     <button onclick="downloadImage()">تحميل الصورة</button>
 
     <script>
-       function generateCard() {
-    let name = document.getElementById("nameInput").value;
-    let canvas = document.getElementById("greetingCard");
-    let ctx = canvas.getContext("2d");
-
-    let img = new Image();
-    img.src = "https://raw.githubusercontent.com/webdesigner-SA/cards/main/greeting.jpg"; // Replace with your actual image link
-
-    img.onload = function() {
-        // Clear the canvas before drawing a new image
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw the background image
-        ctx.drawImage(img, 0, 0, 500, 300);
-
-        // Set text properties
-        ctx.font = "24px Arial";
-        ctx.fillStyle = "red";
-        ctx.textAlign = "center";
-
-        // Draw the new text
-        ctx.fillText(name, canvas.width / 2, 150);
-    };
-}
-
+        function generateCard() {
+            let name = document.getElementById("nameInput").value;
+            let canvas = document.getElementById("greetingCard");
+            let ctx = canvas.getContext("2d");
+            
+            let img = new Image();
+            img.src ="https://raw.githubusercontent.com/webdesigner-SA/cards/main/greeting.jpg"; // Replace with your actual image link
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, 500, 300);
+                ctx.font = "24px Arial";
+                ctx.fillStyle = "red";
+                ctx.fillText(name, 150, 150);
+            };
+        }
 
         function downloadImage() {
             let canvas = document.getElementById("greetingCard");
@@ -56,4 +45,5 @@
     </script>
 </body>
 </html>
+
 
