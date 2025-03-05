@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة تهنئة مخصصة</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        canvas { border: 1px solid #ddd; margin-top: 20px; }
+        input, button { margin-top: 10px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>اكتب اسمك لإنشاء بطاقة تهنئة</h2>
+    <input type="text" id="nameInput" placeholder="اكتب اسمك هنا">
+    <button onclick="generateCard()">إنشاء البطاقة</button>
+    <br>
+    <canvas id="greetingCard" width="500" height="300"></canvas>
+    <br>
+    <button onclick="downloadImage()">تحميل الصورة</button>
+
+    <script>
+        function generateCard() {
+            let name = document.getElementById("nameInput").value;
+            let canvas = document.getElementById("greetingCard");
+            let ctx = canvas.getContext("2d");
+            
+            let img = new Image();
+            img.src = "https://via.placeholder.com/500x300.png?text=تهنئة"; // استبدل بالصورة الأصلية
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, 500, 300);
+                ctx.font = "24px Arial";
+                ctx.fillStyle = "red";
+                ctx.fillText("مبروك يا " + name, 150, 150);
+            };
+        }
+
+        function downloadImage() {
+            let canvas = document.getElementById("greetingCard");
+            let link = document.createElement("a");
+            link.download = "تهنئة.png";
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
